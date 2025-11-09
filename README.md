@@ -21,10 +21,6 @@ body{
   line-height:1.45;
   background: linear-gradient(180deg,#eaf4ff 0%, #ffffff 100%);
   color:#083042;
-  display:none; /* hidden by default for desktop */
-}
-@media (max-width:980px) {
-  body{ display:block; }
 }
 .topbar{
   display:flex;
@@ -50,7 +46,7 @@ body{
 .hero h1{font-size:24px;margin:0;color:var(--blue-900);}
 .hero p{color:var(--muted);font-size:14px;margin:4px 0 10px 0;}
 .hero-card, .card{background:white;border-radius:12px;padding:14px;margin-top:10px;box-shadow:0 6px 20px rgba(10,30,60,0.04);}
-.hero-visual{width:100%;height:150px;background-image:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=800');background-size:cover;background-position:center;border-radius:12px;}
+.hero-visual{width:100%;height:200px;background-image:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=800');background-size:cover;background-position:center;border-radius:12px;}
 section{padding:20px;}
 .grid-3{display:grid;grid-template-columns:1fr;gap:12px;}
 .programs{display:grid;grid-template-columns:1fr;gap:12px;}
@@ -58,7 +54,10 @@ input,select{padding:10px;border-radius:8px;border:1px solid rgba(10,20,30,0.06)
 .small{font-size:12px;color:var(--muted);}
 img{max-width:100%;height:auto;border-radius:12px;}
 a{color:var(--blue-700);text-decoration:none;}
+
+/* DESKTOP STYLES */
 @media (min-width:500px){.grid-3,.programs{grid-template-columns:1fr 1fr;}}
+@media (min-width:900px){.grid-3{grid-template-columns:repeat(3,1fr);} .hero{flex-direction:row;gap:20px;} .hero-left{flex:1;} .hero-visual{flex:1;height:300px;}}
 </style>
 </head>
 <body>
@@ -82,6 +81,14 @@ a{color:var(--blue-700);text-decoration:none;}
         <option>Chinese</option>
         <option>Arabic</option>
       </select>
+    </div>
+  </div>
+  <div class="auth-actions">
+    <button class="btn ghost" id="btnLogin">Login</button>
+    <button class="btn" id="btnRegister">Create Account</button>
+  </div>
+</div>
+
 <!-- HERO -->
 <header class="hero">
   <div class="hero-left">
@@ -111,11 +118,22 @@ a{color:var(--blue-700);text-decoration:none;}
 <section id="about">
   <h2>About BridgeVest Global</h2>
   <p class="muted">BridgeVest Global is a diversified asset management company transforming agriculture and real estate into transparent, high-yielding opportunities through a technology-driven ecosystem.
-Our integrated model merges human expertise, AI forecasting, and blockchain transparency, enabling individuals, institutions, and partners to invest confidently in real, income-generating assets — from fertile plantations to urban developments.</p>
-  <p class="small muted"><strong>Vision:</strong> To make agriculture and real estate the world’s most accessible, trusted, and profitable investment classes.
-To democratize access to opportunities that drive food security, housing, and sustainable wealth globally.<br>
-  <strong>Mission:</strong>To bridge people from capital to opportunity, turning ordinary savings into growth through innovation, integrity, and expert management, connecting sustainable assets with smart financial technology.<br>
+Our integrated model merges human expertise, AI forecasting, and blockchain transparency, enabling investors to participate in real income-generating assets.</p>
+  <p class="small muted"><strong>Vision:</strong> Democratize access to sustainable investments.<br>
+  <strong>Mission:</strong> Bridge people from capital to opportunity via technology and expertise.<br>
   <strong>Motto:</strong> “Building Wealth, Securing Futures.”</p>
+</section>
+
+<!-- VIDEO EXPLANATION -->
+<section id="video">
+  <h2>Video Explanation</h2>
+  <div class="card">
+    <video controls width="100%">
+      <source src="video/bridgevest_intro.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p class="small muted">Watch a complete explanation of BridgeVest Global.</p>
+  </div>
 </section>
 
 <!-- BOARDS OF DIRECTORS -->
@@ -135,7 +153,7 @@ To democratize access to opportunities that drive food security, housing, and su
     <div class="card">
       <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Director 3">
       <h4>Michael Leonard</h4>
-      <div class="small muted">Acounting Officer</div>
+      <div class="small muted">Accounting Officer</div>
     </div>
   </div>
 </section>
@@ -156,23 +174,20 @@ To democratize access to opportunities that drive food security, housing, and su
   <div class="grid-3">
     <div class="card">
       <h4>Agriculture Investment</h4>
-      <p class="muted">At BridgeVest, we connect investors with real agricultural assets through structured participation across global agricultural value chains.
-Your investment serves as the seed managed by our professionals to yield measurable growth.
-Become a farmer today, without being on the farm.</p>
+      <p class="muted">Structured participation across agricultural value chains managed professionally.</p>
       <button class="btn" onclick="backendCall('AgriViewPlans')">View Plans</button>
       <button class="btn ghost" onclick="backendCall('AgriRentLand')">Rent a Land</button>
     </div>
     <div class="card">
       <h4>Real Estate Investment</h4>
-      <p class="muted">“Building Today, Profiting Tomorrow.”
-Join global real estate projects from property leasing to construction and estate development without managing a single site yourself.</p>
+      <p class="muted">Participate in global real estate projects without managing sites.</p>
       <button class="btn" onclick="backendCall('RealEstatePlans')">View Plans</button>
       <button class="btn ghost" onclick="backendCall('RentBuild')">Rent & Build</button>
     </div>
     <div class="card">
       <h4>Commodity & Property Indices</h4>
-      <canvas id="commodityChart" height="150"></canvas>
-      <canvas id="propertyChart" height="150" style="margin-top:8px;"></canvas>
+      <canvas id="commodityChart" height="120"></canvas>
+      <canvas id="propertyChart" height="120" style="margin-top:8px;"></canvas>
     </div>
   </div>
 </section>
