@@ -82,9 +82,6 @@ a{color:var(--blue-700);text-decoration:none;}
         <option>Chinese</option>
         <option>Arabic</option>
       </select>
-    </div>
-  </div>
-
 <!-- HERO -->
 <header class="hero">
   <div class="hero-left">
